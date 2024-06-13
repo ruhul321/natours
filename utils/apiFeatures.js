@@ -23,7 +23,7 @@ class APIFeatures {
     if (this.queryString.sort) {
       // console.log(this.queryString.sort);
       const sortBy = this.queryString.sort.split(',').join(' ');
-      console.log(sortBy);
+      //console.log(sortBy);
       this.query = this.query.sort(sortBy);
     } else {
       this.query = this.query.sort('-createdAt'); // - means here is decreasing
@@ -33,7 +33,7 @@ class APIFeatures {
 
   limitFields() {
     if (this.queryString.fields) {
-      console.log(this.queryString.fields);
+      //console.log(this.queryString.fields);
       const fields = this.queryString.fields.split(',').join(' ');
       this.query = this.query.select(fields);
     } else {

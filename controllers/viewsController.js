@@ -51,11 +51,11 @@ exports.getAccount = (req, res) => {
 };
 
 exports.getMyTours = catchAsync(async (req, res, next) => {
-  console.log(req.user);
+  //console.log(req.user);
   //1. Find all bookings
   //const bookings = factory.getAll(Booking);
   const bookings = await Booking.find({ user: req.user.id });
-  console.log(bookings);
+  //console.log(bookings);
 
   //2. Find all tours with the returned booking IDs
   const tourIDs = bookings.map((el) => el.tour);
@@ -65,8 +65,8 @@ exports.getMyTours = catchAsync(async (req, res, next) => {
 });
 
 exports.updateUserData = catchAsync(async (req, res, next) => {
-  console.log('UPDATING USER...', req.body);
-  console.log(req.user._id);
+  //console.log('UPDATING USER...', req.body);
+  //console.log(req.user._id);
   const updatedUser = await User.findByIdAndUpdate(
     req.user._id,
     {

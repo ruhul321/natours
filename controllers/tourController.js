@@ -52,7 +52,7 @@ exports.resizeTourImages = catchAsync(async (req, res, next) => {
     }),
   );
 
-  console.log(req.body);
+  //console.log(req.body);
   next();
 });
 
@@ -74,7 +74,7 @@ exports.getToursWithin = catchAsync(async (req, res, next) => {
   const { distance, latlng, unit } = req.params;
   const [lat, lng] = latlng.split(',');
   const radius = unit === 'mi' ? distance / 3963.2 : distance / 6738.1;
-  console.log(radius);
+  //console.log(radius);
   if (!lat || !lng) {
     return next(
       new AppError(
@@ -88,7 +88,7 @@ exports.getToursWithin = catchAsync(async (req, res, next) => {
       $geoWithin: { $centerSphere: [[lng, lat], radius] },
     },
   });
-  console.log(lat, lng);
+  //console.log(lat, lng);
   res.status(200).json({
     status: 'success',
     result: tours.length,
