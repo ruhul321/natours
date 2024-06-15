@@ -17,6 +17,7 @@ const bookBtn = document.getElementById('book-tour');
 if (mapBox) {
   const locations = JSON.parse(mapBox.dataset.locations);
   displayMap(locations);
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
 }
 
 if (loginForm)

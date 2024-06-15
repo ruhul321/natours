@@ -13458,6 +13458,7 @@ var bookBtn = document.getElementById('book-tour'); //DELEGATION
 if (mapBox) {
   var locations = JSON.parse(mapBox.dataset.locations);
   (0, _mapbox.displayMap)(locations);
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
 }
 
 if (loginForm) loginForm.addEventListener('submit', function (e) {
