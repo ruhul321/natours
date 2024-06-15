@@ -26,7 +26,7 @@ app.set('views', path.join(__dirname, 'views'));
 //Middleware to load static files without routes in browser
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(helmet()); //Set security HTTP headers
+app.use(helmet({ contentSecurityPolicy: false })); //Set security HTTP headers
 
 //Development logger
 if (process.env.NODE_ENV === 'development') {
