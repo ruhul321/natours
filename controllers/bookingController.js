@@ -59,6 +59,7 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 //   // console.log(req.originalUrl.split('?')[0].replace('/my-tours/', '/my-tours'));
 // });
 const createBookingCheckout = async (session) => {
+  console.log(session);
   try {
     const tour = session.client_reference_id;
     const user = (await User.findOne({ email: session.customer_email })).id;
