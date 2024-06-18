@@ -1322,3 +1322,10 @@ body {
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
 }
+.password_check {
+  color: #eb4d4b;
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}

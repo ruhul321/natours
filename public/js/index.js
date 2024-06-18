@@ -2,6 +2,7 @@
 import '@babel/polyfill';
 import { displayMap } from './mapbox';
 import { login, logout } from './login';
+import { signup } from './signup';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 import { showAlert } from './alerts';
@@ -9,6 +10,7 @@ import { showAlert } from './alerts';
 //DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.form--login');
+const signUpForm = document.querySelector('.form--signup');
 const logoutButton = document.querySelector('.nav__el--logout');
 const userDataFrom = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
@@ -20,6 +22,35 @@ if (mapBox) {
   displayMap(locations);
   document.body.scrollTop = document.documentElement.scrollTop = 0;
 }
+
+const checkpassword = () => {
+  const password = document.getElementById('password').value;
+  const passwordConfirm = document.getElementById('passwordConfirm').value;
+  if (password !== passwordConfirm) {
+    document.querySelector('.password_check').textContent =
+      'Passwords do not match';
+    document.querySelector('.btn--green').disabled = true;
+    document.querySelector('.btn--green').style.pointerEvents = 'none';
+  } else {
+    document.querySelector('.password_check').textContent = '';
+    document.querySelector('.btn--green').disabled = false;
+    document.querySelector('.btn--green').style.pointerEvents = 'auto';
+    // passwordConfirm.setCustomValidity('Passwords do not match');
+  }
+};
+
+if (signUpForm)
+  document
+    .getElementById('passwordConfirm')
+    .addEventListener('input', checkpassword);
+signUpForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const passwordConfirm = document.getElementById('passwordConfirm').value;
+  signup(name, email, password, passwordConfirm);
+});
 
 if (loginForm)
   loginForm.addEventListener('submit', (e) => {
