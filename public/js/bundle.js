@@ -12811,15 +12811,17 @@ var checkpassword = function checkpassword() {
     // passwordConfirm.setCustomValidity('Passwords do not match');
   }
 };
-if (signUpForm) document.getElementById('passwordConfirm').addEventListener('input', checkpassword);
-signUpForm.addEventListener('submit', function (e) {
-  e.preventDefault();
-  var name = document.getElementById('name').value;
-  var email = document.getElementById('email').value;
-  var password = document.getElementById('password').value;
-  var passwordConfirm = document.getElementById('passwordConfirm').value;
-  (0, _signup.signup)(name, email, password, passwordConfirm);
-});
+if (signUpForm) {
+  document.getElementById('passwordConfirm').addEventListener('input', checkpassword);
+  signUpForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var passwordConfirm = document.getElementById('passwordConfirm').value;
+    (0, _signup.signup)(name, email, password, passwordConfirm);
+  });
+}
 if (loginForm) loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
   var email = document.getElementById('email').value;
